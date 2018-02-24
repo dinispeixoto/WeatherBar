@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D194F23D2042116B00D308D4 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194F23C2042116B00D308D4 /* WeatherView.swift */; };
 		D1F533FB2041F42000A53978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F533FA2041F42000A53978 /* AppDelegate.swift */; };
 		D1F533FD2041F42000A53978 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1F533FC2041F42000A53978 /* Assets.xcassets */; };
 		D1F534002041F42000A53978 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F533FE2041F42000A53978 /* MainMenu.xib */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D194F23C2042116B00D308D4 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		D1F533F72041F42000A53978 /* WeatherBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F533FA2041F42000A53978 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1F533FC2041F42000A53978 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				D1F5340A2042021A00A53978 /* WeatherAPI.swift */,
 				D1F533FC2041F42000A53978 /* Assets.xcassets */,
 				D1F533FE2041F42000A53978 /* MainMenu.xib */,
+				D194F23C2042116B00D308D4 /* WeatherView.swift */,
 				D1F534012041F42000A53978 /* Info.plist */,
 				D1F534022041F42000A53978 /* WeatherBar.entitlements */,
 			);
@@ -140,6 +143,7 @@
 				D1F5340B2042021A00A53978 /* WeatherAPI.swift in Sources */,
 				D1F534092041FEE900A53978 /* StatusMenuController.swift in Sources */,
 				D1F533FB2041F42000A53978 /* AppDelegate.swift in Sources */,
+				D194F23D2042116B00D308D4 /* WeatherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
