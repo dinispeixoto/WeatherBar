@@ -15,6 +15,7 @@ class WeatherAPI {
     
     struct Weather: CustomStringConvertible {
         var city: String
+        var icon: String
         var currentTemp: Float
         var conditions: String
         
@@ -70,6 +71,7 @@ class WeatherAPI {
         
         let weather = Weather(
             city: json["name"] as! String,
+            icon: weatherDict["icon"] as! String,
             currentTemp: mainDict["temp"] as! Float,
             conditions: weatherDict["main"] as! String
         )

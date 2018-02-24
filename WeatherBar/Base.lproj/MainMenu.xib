@@ -12,6 +12,41 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="RCL-B8-01h" customClass="WeatherView" customModule="WeatherBar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="253" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JLs-1R-uos">
+                    <rect key="frame" x="54" y="29" width="186" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="City" id="eEm-mV-DQ3">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gB3-Qb-oCo">
+                    <rect key="frame" x="8" y="6" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="TSd-fR-cn2"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UdC-dk-5TL">
+                    <rect key="frame" x="54" y="6" width="186" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temperature and conditions" id="QJF-PM-fUO">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <connections>
+                <outlet property="cityTextField" destination="JLs-1R-uos" id="zRW-tT-KdJ"/>
+                <outlet property="currentConditionsTextField" destination="UdC-dk-5TL" id="onV-XS-THk"/>
+                <outlet property="imageView" destination="gB3-Qb-oCo" id="u1o-LE-n8S"/>
+            </connections>
+            <point key="canvasLocation" x="-55.5" y="-61"/>
+        </customView>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="WeatherBar" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="r3T-5a-Q18" customClass="StatusMenuController" customModule="WeatherBar" customModuleProvider="target">
@@ -22,15 +57,15 @@
         </customObject>
         <menu id="xRa-te-tBM">
             <items>
+                <menuItem title="Weather" id="XSz-m7-jLc">
+                    <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="krr-CX-M3w"/>
                 <menuItem title="Update" id="ubM-Xa-3aY">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="updateClicked:" target="r3T-5a-Q18" id="1NS-Tj-doR"/>
                     </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="krr-CX-M3w"/>
-                <menuItem title="Weather" id="XSz-m7-jLc">
-                    <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="t15-1f-fnR"/>
                 <menuItem title="Quit" id="enD-qe-T8A">
@@ -42,40 +77,5 @@
             </items>
             <point key="canvasLocation" x="-274" y="-296"/>
         </menu>
-        <customView id="RCL-B8-01h" customClass="WeatherView" customModule="WeatherBar" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="265" height="83"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JLs-1R-uos">
-                    <rect key="frame" x="73" y="51" width="28" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="City" id="eEm-mV-DQ3">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UdC-dk-5TL">
-                    <rect key="frame" x="73" y="20" width="174" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temperature and conditions" id="QJF-PM-fUO">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gB3-Qb-oCo">
-                    <rect key="frame" x="19" y="15" width="48" height="53"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="TSd-fR-cn2"/>
-                </imageView>
-            </subviews>
-            <connections>
-                <outlet property="cityTextField" destination="JLs-1R-uos" id="zRW-tT-KdJ"/>
-                <outlet property="currentConditionsTextField" destination="UdC-dk-5TL" id="onV-XS-THk"/>
-                <outlet property="imageView" destination="gB3-Qb-oCo" id="u1o-LE-n8S"/>
-            </connections>
-            <point key="canvasLocation" x="-49" y="-45"/>
-        </customView>
     </objects>
 </document>
