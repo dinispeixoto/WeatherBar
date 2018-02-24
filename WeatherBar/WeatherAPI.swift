@@ -9,15 +9,26 @@
 import Foundation
 
 class WeatherAPI {
+    
     let API_KEY = "6979706d12688265a5ba7d3b5590625f"
     let BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
     
-    func fetchWeather(_ query: String) {
+    struct Weather: CustomStringConvertible {
+        var city: String
+        var currentTemp: Float
+        var conditions: String
+        
+        var description: String {
+            return "\(city): \(currentTemp) ºC and \(conditions)"
+        }
+    }
+    
+    func fetchWeather(_ query: String, success: @escaping (Weather) -> Void) {
         let session = URLSession.shared
         // url-escape the query string we're passed
         let escapedQuery = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        let url = URL(string: "\(BASE_URL)?APPID=\(API_KEY)&units=imperial&q=\(escapedQuery!)")
-        NSLog("url: \(url!)")
+        let url = URL(string: "\(BASE_URL)?APPID=\(API_KEY)&units=metric&q=\(escapedQuery!)")
+        // NSLog("url: \(url!)") - used it for debugging
         
         let task = session.dataTask(with: url!) { data, response, err in
             // first check for a hard error
@@ -29,8 +40,8 @@ class WeatherAPI {
             if let httpResponse = response as? HTTPURLResponse {
                 switch httpResponse.statusCode {
                 case 200: // all good!
-                    if let dataString = String(data: data!, encoding: .utf8) {
-                        NSLog(dataString)
+                    if let weather = self.weatherFromJSONData(data!) {
+                        success(weather)
                     }
                 case 401: // unauthorized
                     NSLog("weather api returned an 'unauthorized' response. Did you set your API key?")
@@ -40,5 +51,29 @@ class WeatherAPI {
             }
         }
         task.resume()
+    }
+    
+    func weatherFromJSONData(_ data: Data) -> Weather? {
+        typealias JSONDict = [String:AnyObject]
+        let json : JSONDict
+        
+        do {
+            json = try JSONSerialization.jsonObject(with: data, options: []) as! JSONDict
+        } catch {
+            NSLog("JSON parsing failed: \(error)")
+            return nil
+        }
+        
+        var mainDict = json["main"] as! JSONDict
+        var weatherList = json["weather"] as! [JSONDict]
+        var weatherDict = weatherList[0]
+        
+        let weather = Weather(
+            city: json["name"] as! String,
+            currentTemp: mainDict["temp"] as! Float,
+            conditions: weatherDict["main"] as! String
+        )
+        
+        return weather
     }
 }

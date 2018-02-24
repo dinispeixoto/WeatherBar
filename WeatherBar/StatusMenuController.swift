@@ -9,7 +9,10 @@
 import Cocoa
 
 class StatusMenuController: NSObject {
+    
+    @IBOutlet weak var weatherView: WeatherView!
     @IBOutlet weak var statusMenu: NSMenu!
+    var weatherMenuItem: NSMenuItem!
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let weatherAPI = WeatherAPI()
@@ -19,10 +22,21 @@ class StatusMenuController: NSObject {
         icon?.isTemplate = true // best for dark mode
         statusItem.image = icon
         statusItem.menu = statusMenu
+        
+        weatherMenuItem = statusMenu.item(withTitle: "Weather")
+        weatherMenuItem.view = weatherView
+        
+        updateWeather()
     }
     
-    @IBAction func updateClicked(sender: NSMenuItem) {
-        weatherAPI.fetchWeather("Seattle")
+    func updateWeather() {
+        weatherAPI.fetchWeather("Braga") { weather in
+            self.weatherView.update(weather)
+        }
+    }
+    
+    @IBAction func updateClicked(_ sender: NSMenuItem) {
+        updateWeather()
     }
     
     @IBAction func quitClicked(sender: NSMenuItem) {

@@ -10,10 +10,15 @@ import Cocoa
 
 class WeatherView: NSView {
 
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
+    @IBOutlet weak var imageView: NSImageView!
+    @IBOutlet weak var cityTextField: NSTextField!
+    @IBOutlet weak var currentConditionsTextField: NSTextField!
+    
+    func update(_ weather: Weather) {
+        DispatchQueue.main.async {
+            self.cityTextField.stringValue = weather.city
+            self.currentConditionsTextField.stringValue = "\(Int(weather.currentTemp)) °C and \(weather.conditions)"
+        }
     }
     
 }
