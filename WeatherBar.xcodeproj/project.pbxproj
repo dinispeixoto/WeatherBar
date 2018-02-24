@@ -10,6 +10,8 @@
 		D1F533FB2041F42000A53978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F533FA2041F42000A53978 /* AppDelegate.swift */; };
 		D1F533FD2041F42000A53978 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1F533FC2041F42000A53978 /* Assets.xcassets */; };
 		D1F534002041F42000A53978 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F533FE2041F42000A53978 /* MainMenu.xib */; };
+		D1F534092041FEE900A53978 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F534082041FEE900A53978 /* StatusMenuController.swift */; };
+		D1F5340B2042021A00A53978 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5340A2042021A00A53978 /* WeatherAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		D1F533FF2041F42000A53978 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D1F534012041F42000A53978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1F534022041F42000A53978 /* WeatherBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherBar.entitlements; sourceTree = "<group>"; };
+		D1F534082041FEE900A53978 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		D1F5340A2042021A00A53978 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,8 @@
 			isa = PBXGroup;
 			children = (
 				D1F533FA2041F42000A53978 /* AppDelegate.swift */,
+				D1F534082041FEE900A53978 /* StatusMenuController.swift */,
+				D1F5340A2042021A00A53978 /* WeatherAPI.swift */,
 				D1F533FC2041F42000A53978 /* Assets.xcassets */,
 				D1F533FE2041F42000A53978 /* MainMenu.xib */,
 				D1F534012041F42000A53978 /* Info.plist */,
@@ -131,6 +137,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1F5340B2042021A00A53978 /* WeatherAPI.swift in Sources */,
+				D1F534092041FEE900A53978 /* StatusMenuController.swift in Sources */,
 				D1F533FB2041F42000A53978 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,7 +267,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = WeatherBar/WeatherBar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WeatherBar/Info.plist;
@@ -274,7 +281,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = WeatherBar/WeatherBar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WeatherBar/Info.plist;
