@@ -42,7 +42,7 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
     func fetchCountryAndCity(location: CLLocation, completion: @escaping (String, String) -> ()) {
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
             if let error = error {
-                print(error)
+                NSLog("\(error)")
             } else if let country = placemarks?.first?.country,
                 let city = placemarks?.first?.locality {
                 completion(country, city)
@@ -52,24 +52,17 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0] as CLLocation
-        
         updateWeather(userLocation)
-        
         manager.stopUpdatingLocation()
     }
     
     func updateWeather(_ userLocation: CLLocation) {
-        NSLog("user latitude = \(userLocation.coordinate.latitude)")
-        NSLog("user longitude = \(userLocation.coordinate.longitude)")
         
         fetchCountryAndCity(location: userLocation) { country, city in
-            NSLog("country:", country)
-            NSLog("city:", city)
+            self.weatherAPI.fetchWeather("\(city)") { weather in
+                self.weatherView.update(weather)
+            }
         }
-        
-        //weatherAPI.fetchWeather(city) { weather in
-        //    self.weatherView.update(weather)
-        //}
     }
     
     @IBAction func updateClicked(_ sender: NSMenuItem) {
