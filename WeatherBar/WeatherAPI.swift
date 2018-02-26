@@ -14,19 +14,20 @@ class WeatherAPI {
     let BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
     
     struct Weather: CustomStringConvertible {
-        var city: String
-        var icon: String
-        var currentTemp: Float
-        var conditions: String
+        var city: String                        // City name
+        var icon: String                        // Icon
+        var currentTemp: Float                  // Current temperature
+        var conditions: String                  // Weather conditions
         
         var description: String {
             return "\(city): \(currentTemp) ºC and \(conditions)"
         }
     }
     
+    // Request weather on current location
     func fetchWeather(_ query: String, success: @escaping (Weather) -> Void) {
         let session = URLSession.shared
-        // url-escape the query string we're passed
+        // url-escape the query string we're passing
         let escapedQuery = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         let url = URL(string: "\(BASE_URL)?APPID=\(API_KEY)&units=metric&q=\(escapedQuery!)")
         // NSLog("url: \(url!)") - used it for debugging
@@ -54,6 +55,7 @@ class WeatherAPI {
         task.resume()
     }
     
+    // Parsing received JSON
     func weatherFromJSONData(_ data: Data) -> Weather? {
         typealias JSONDict = [String:AnyObject]
         let json : JSONDict

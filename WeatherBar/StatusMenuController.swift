@@ -7,8 +7,6 @@
 //
 
 import Cocoa
-import Foundation
-import MapKit
 import CoreLocation
 
 class StatusMenuController: NSObject, CLLocationManagerDelegate{
@@ -31,14 +29,41 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
         statusItem.image = icon
         statusItem.menu = statusMenu
         
+        // Making "Weather" menu item as weatherView
         weatherMenuItem = statusMenu.item(withTitle: "Weather")
         weatherMenuItem.view = weatherView
         
+        // Starting locationManager
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
     }
     
+    @IBAction func updateClicked(_ sender: NSMenuItem) {
+        locationManager.startUpdatingLocation()
+    }
+    
+    @IBAction func quitClicked(sender: NSMenuItem) {
+        NSApplication.shared.terminate(self)
+    }
+    
+    // Getting current location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation:CLLocation = locations[0] as CLLocation
+        updateWeather(userLocation)
+        manager.stopUpdatingLocation()
+    }
+    
+    // Update info based on the current location
+    func updateWeather(_ userLocation: CLLocation) {
+        fetchCountryAndCity(location: userLocation) { country, city in
+            self.weatherAPI.fetchWeather("\(city)") { weather in
+                self.weatherView.update(weather)
+            }
+        }
+    }
+    
+    // Reverse geolocation, getting city based on current location
     func fetchCountryAndCity(location: CLLocation, completion: @escaping (String, String) -> ()) {
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
             if let error = error {
@@ -48,28 +73,5 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
                 completion(country, city)
             }
         }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations[0] as CLLocation
-        updateWeather(userLocation)
-        manager.stopUpdatingLocation()
-    }
-    
-    func updateWeather(_ userLocation: CLLocation) {
-        
-        fetchCountryAndCity(location: userLocation) { country, city in
-            self.weatherAPI.fetchWeather("\(city)") { weather in
-                self.weatherView.update(weather)
-            }
-        }
-    }
-    
-    @IBAction func updateClicked(_ sender: NSMenuItem) {
-        locationManager.startUpdatingLocation()
-    }
-    
-    @IBAction func quitClicked(sender: NSMenuItem) {
-        NSApplication.shared.terminate(self)
     }
 }
