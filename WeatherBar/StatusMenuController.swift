@@ -59,6 +59,12 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
         fetchCountryAndCity(location: userLocation) { country, city in
             self.weatherAPI.fetchWeather("\(city)") { weather in
                 self.weatherView.update(weather)
+                DispatchQueue.main.async { // Main Thread
+                    //self.statusItem.title = "\(weather.currentTemp) ºC"
+                    
+                    
+
+                }
             }
         }
     }

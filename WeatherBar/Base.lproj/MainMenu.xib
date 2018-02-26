@@ -34,7 +34,7 @@
                     <rect key="frame" x="54" y="6" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temperature and conditions" id="QJF-PM-fUO">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="12"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -77,5 +77,6 @@
             </items>
             <point key="canvasLocation" x="-274" y="-296"/>
         </menu>
+        <userDefaultsController representsSharedInstance="YES" id="YyL-gQ-CrH"/>
     </objects>
 </document>
