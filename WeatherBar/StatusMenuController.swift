@@ -25,7 +25,7 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
     var locationManager = CLLocationManager()
     
     // Preferences
-    let userPreferences = Preferences.init(temperatureInfo: true, unit: "ºC", unitInfo: "metric")
+    let userPreferences = Preferences.init(temperatureInfo: true, unit: " F", unitInfo: "imperial")
     struct Preferences {
         var temperatureInfo: Bool
         var unit: String
@@ -60,7 +60,6 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
         
     }
     
-    
     // Getting current location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0] as CLLocation
@@ -72,10 +71,11 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
     func updateWeather(_ userLocation: CLLocation) {
         fetchCountryAndCity(location: userLocation) { country, city in
             self.weatherAPI.fetchWeather("\(city)", preferences: self.userPreferences) { weather in
-                self.weatherView.update(weather)
-                // if()
-                DispatchQueue.main.async { // Main Thread
-                    self.statusItem.title = "\(weather.currentTemp) ºC"
+                self.weatherView.update(weather, preferences: self.userPreferences)
+                if(self.userPreferences.temperatureInfo){
+                    DispatchQueue.main.async { // Main Thread
+                        self.statusItem.title = "\(weather.currentTemp) \(self.userPreferences.unit)"
+                    }
                 }
             }
         }

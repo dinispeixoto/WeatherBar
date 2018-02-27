@@ -14,10 +14,10 @@ class WeatherView: NSView {
     @IBOutlet weak var cityTextField: NSTextField!
     @IBOutlet weak var currentConditionsTextField: NSTextField!
     
-    func update(_ weather: WeatherAPI.Weather) {
+    func update(_ weather: WeatherAPI.Weather, preferences: StatusMenuController.Preferences) {
         DispatchQueue.main.async {
             self.cityTextField.stringValue = weather.city
-            self.currentConditionsTextField.stringValue = "\(Int(weather.currentTemp))°C and \(weather.conditions)"
+            self.currentConditionsTextField.stringValue = "\(Int(weather.currentTemp))\(preferences.unit) and \(weather.conditions)"
             self.imageView.image = NSImage(named: NSImage.Name(rawValue: weather.icon))
         }
     }
