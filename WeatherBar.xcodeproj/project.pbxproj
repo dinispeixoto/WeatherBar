@@ -13,6 +13,7 @@
 		D1F534002041F42000A53978 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F533FE2041F42000A53978 /* MainMenu.xib */; };
 		D1F534092041FEE900A53978 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F534082041FEE900A53978 /* StatusMenuController.swift */; };
 		D1F5340B2042021A00A53978 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5340A2042021A00A53978 /* WeatherAPI.swift */; };
+		D1F53B57204575E2008DC290 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F53B56204575E2008DC290 /* PreferencesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		D1F534022041F42000A53978 /* WeatherBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherBar.entitlements; sourceTree = "<group>"; };
 		D1F534082041FEE900A53978 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		D1F5340A2042021A00A53978 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
+		D1F53B56204575E2008DC290 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				D1F533FC2041F42000A53978 /* Assets.xcassets */,
 				D1F533FE2041F42000A53978 /* MainMenu.xib */,
 				D194F23C2042116B00D308D4 /* WeatherView.swift */,
+				D1F53B56204575E2008DC290 /* PreferencesView.swift */,
 				D1F534012041F42000A53978 /* Info.plist */,
 				D1F534022041F42000A53978 /* WeatherBar.entitlements */,
 			);
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1F53B57204575E2008DC290 /* PreferencesView.swift in Sources */,
 				D1F5340B2042021A00A53978 /* WeatherAPI.swift in Sources */,
 				D1F534092041FEE900A53978 /* StatusMenuController.swift in Sources */,
 				D1F533FB2041F42000A53978 /* AppDelegate.swift in Sources */,

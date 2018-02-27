@@ -12,6 +12,7 @@ import CoreLocation
 class StatusMenuController: NSObject, CLLocationManagerDelegate{
     
     @IBOutlet weak var weatherView: WeatherView!
+    @IBOutlet weak var preferencesView: PreferencesView!
     @IBOutlet weak var statusMenu: NSMenu!
     var weatherMenuItem: NSMenuItem!
     
@@ -22,6 +23,14 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
     
     // Location
     var locationManager = CLLocationManager()
+    
+    // Preferences
+    let userPreferences = Preferences.init(temperatureInfo: true, unit: "ºC", unitInfo: "metric")
+    struct Preferences {
+        var temperatureInfo: Bool
+        var unit: String
+        var unitInfo: String
+    }
     
     override func awakeFromNib() {
         let icon = NSImage(named: NSImage.Name(rawValue: "statusIcon"))
@@ -47,6 +56,11 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
         NSApplication.shared.terminate(self)
     }
     
+    @IBAction func preferencesClicked(_ sender: NSMenuItem) {
+        
+    }
+    
+    
     // Getting current location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0] as CLLocation
@@ -57,13 +71,11 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
     // Update info based on the current location
     func updateWeather(_ userLocation: CLLocation) {
         fetchCountryAndCity(location: userLocation) { country, city in
-            self.weatherAPI.fetchWeather("\(city)") { weather in
+            self.weatherAPI.fetchWeather("\(city)", preferences: self.userPreferences) { weather in
                 self.weatherView.update(weather)
+                // if()
                 DispatchQueue.main.async { // Main Thread
-                    //self.statusItem.title = "\(weather.currentTemp) ºC"
-                    
-                    
-
+                    self.statusItem.title = "\(weather.currentTemp) ºC"
                 }
             }
         }

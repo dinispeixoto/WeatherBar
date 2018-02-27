@@ -34,7 +34,7 @@
                     <rect key="frame" x="54" y="6" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temperature and conditions" id="QJF-PM-fUO">
-                        <font key="font" metaFont="system" size="12"/>
+                        <font key="font" metaFont="cellTitle"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -45,12 +45,13 @@
                 <outlet property="currentConditionsTextField" destination="UdC-dk-5TL" id="onV-XS-THk"/>
                 <outlet property="imageView" destination="gB3-Qb-oCo" id="u1o-LE-n8S"/>
             </connections>
-            <point key="canvasLocation" x="-55.5" y="-61"/>
+            <point key="canvasLocation" x="-213" y="-148"/>
         </customView>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="WeatherBar" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="r3T-5a-Q18" customClass="StatusMenuController" customModule="WeatherBar" customModuleProvider="target">
             <connections>
+                <outlet property="preferencesView" destination="9oY-h6-gX7" id="WDk-rP-z1G"/>
                 <outlet property="statusMenu" destination="xRa-te-tBM" id="sRk-wA-aNk"/>
                 <outlet property="weatherView" destination="RCL-B8-01h" id="D34-gJ-biK"/>
             </connections>
@@ -67,6 +68,12 @@
                         <action selector="updateClicked:" target="r3T-5a-Q18" id="1NS-Tj-doR"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Preferences" id="L69-jV-qnY">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="preferencesClicked:" target="r3T-5a-Q18" id="att-OJ-8t0"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="t15-1f-fnR"/>
                 <menuItem title="Quit" id="enD-qe-T8A">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -78,5 +85,100 @@
             <point key="canvasLocation" x="-274" y="-296"/>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="YyL-gQ-CrH"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="cxd-oq-qFw">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="131" y="158" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="nI6-d7-JdZ">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <point key="canvasLocation" x="78" y="-282"/>
+        </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="9oY-h6-gX7" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="139" y="81" width="250" height="160"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="Bew-4v-QvC">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="160"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PZ5-aw-luz">
+                        <rect key="frame" x="18" y="81" width="62" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Units" id="dUR-sq-zjx">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fmK-hh-C2V">
+                        <rect key="frame" x="166" y="13" width="70" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hs5-rD-1vs">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="save:" target="-1" id="2vL-xu-mH0"/>
+                        </connections>
+                    </button>
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CjV-WO-g27">
+                        <rect key="frame" x="78" y="76" width="155" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Fahrenheit" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="L6G-cX-Tm7" id="zv4-bn-wXG">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="n1l-sD-rT8">
+                                <items>
+                                    <menuItem title="Fahrenheit" state="on" id="L6G-cX-Tm7"/>
+                                    <menuItem title="Celsius" id="ZVv-Eg-uC9"/>
+                                    <menuItem title="Kelvin" id="E0v-Gn-xzD"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="temperatureUnit:" target="-1" id="Nwe-6e-1Ic"/>
+                        </connections>
+                    </popUpButton>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rvu-BX-EqH">
+                        <rect key="frame" x="19" y="118" width="213" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show temperature on menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8re-Mu-PmX">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="showTemperature:" target="-1" id="Ckv-Ib-HVY"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqR-Fm-p6K">
+                        <rect key="frame" x="84" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jgc-KX-q2B">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancel:" target="-1" id="WxX-ug-1e1"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="140" y="-406"/>
+        </window>
+        <button verticalHuggingPriority="750" id="Pp8-Xt-ef6">
+            <rect key="frame" x="0.0" y="0.0" width="82" height="19"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <buttonCell key="cell" type="roundRect" title="Round Rect" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GKR-TG-GIO">
+                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                <font key="font" metaFont="cellTitle"/>
+            </buttonCell>
+        </button>
     </objects>
 </document>

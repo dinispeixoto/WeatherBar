@@ -18,18 +18,19 @@ class WeatherAPI {
         var icon: String                        // Icon
         var currentTemp: Float                  // Current temperature
         var conditions: String                  // Weather conditions
+        var unit: String                        // Temperature Unit
         
         var description: String {
-            return "\(city): \(currentTemp) ºC and \(conditions)"
+            return "\(city): \(currentTemp) \(unit) and \(conditions)"
         }
     }
     
     // Request weather on current location
-    func fetchWeather(_ query: String, success: @escaping (Weather) -> Void) {
+    func fetchWeather(_ query: String, preferences: StatusMenuController.Preferences, success: @escaping (Weather) -> Void) {
         let session = URLSession.shared
         // url-escape the query string we're passing
         let escapedQuery = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        let url = URL(string: "\(BASE_URL)?APPID=\(API_KEY)&units=metric&q=\(escapedQuery!)")
+        let url = URL(string: "\(BASE_URL)?APPID=\(API_KEY)&units=\(preferences.unitInfo)&q=\(escapedQuery!)")
         // NSLog("url: \(url!)") - used it for debugging
         
         let task = session.dataTask(with: url!) { data, response, err in
@@ -42,7 +43,7 @@ class WeatherAPI {
             if let httpResponse = response as? HTTPURLResponse {
                 switch httpResponse.statusCode {
                 case 200: // all good!
-                    if let weather = self.weatherFromJSONData(data!) {
+                    if let weather = self.weatherFromJSONData(data!, unit: preferences.unit) {
                         success(weather)
                     }
                 case 401: // unauthorized
@@ -56,7 +57,7 @@ class WeatherAPI {
     }
     
     // Parsing received JSON
-    func weatherFromJSONData(_ data: Data) -> Weather? {
+    func weatherFromJSONData(_ data: Data, unit: String) -> Weather? {
         typealias JSONDict = [String:AnyObject]
         let json : JSONDict
         
@@ -71,11 +72,14 @@ class WeatherAPI {
         var weatherList = json["weather"] as! [JSONDict]
         var weatherDict = weatherList[0]
         
+        
+        
         let weather = Weather(
             city: json["name"] as! String,
             icon: weatherDict["icon"] as! String,
             currentTemp: mainDict["temp"] as! Float,
-            conditions: weatherDict["main"] as! String
+            conditions: weatherDict["main"] as! String,
+            unit: unit
         )
         
         return weather
