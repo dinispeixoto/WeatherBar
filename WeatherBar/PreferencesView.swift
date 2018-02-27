@@ -11,5 +11,9 @@ import Cocoa
 class PreferencesView: NSView {
 
 
+    @IBAction func saveClicked(_ sender: NSButton) {
+    }
     
+    @IBAction func cancelClicked(_ sender: NSButton) {
+    }
 }

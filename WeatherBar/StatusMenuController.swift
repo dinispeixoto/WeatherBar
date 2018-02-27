@@ -11,8 +11,8 @@ import CoreLocation
 
 class StatusMenuController: NSObject, CLLocationManagerDelegate{
     
+    // Menu & Views
     @IBOutlet weak var weatherView: WeatherView!
-    @IBOutlet weak var preferencesView: PreferencesView!
     @IBOutlet weak var statusMenu: NSMenu!
     var weatherMenuItem: NSMenuItem!
     
@@ -25,7 +25,7 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
     var locationManager = CLLocationManager()
     
     // Preferences
-    let userPreferences = Preferences.init(temperatureInfo: true, unit: " F", unitInfo: "imperial")
+    let userPreferences = Preferences.init(temperatureInfo: true, unit: "ºC", unitInfo: "metric")
     struct Preferences {
         var temperatureInfo: Bool
         var unit: String
@@ -57,7 +57,8 @@ class StatusMenuController: NSObject, CLLocationManagerDelegate{
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
-        
+        //let myWindowController = self.storyboard!.instantiateController(withIdentifier: "preferencesView") as! NSWindowController
+        //myWindowController.showWindow(self)
     }
     
     // Getting current location

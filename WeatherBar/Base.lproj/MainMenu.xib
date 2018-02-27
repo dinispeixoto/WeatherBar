@@ -71,7 +71,7 @@
                 <menuItem title="Preferences" id="L69-jV-qnY">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="preferencesClicked:" target="r3T-5a-Q18" id="att-OJ-8t0"/>
+                        <action selector="orderFront:" target="9oY-h6-gX7" id="L3E-lM-g3d"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="t15-1f-fnR"/>
@@ -85,23 +85,12 @@
             <point key="canvasLocation" x="-274" y="-296"/>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="YyL-gQ-CrH"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="cxd-oq-qFw">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="131" y="158" width="480" height="270"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <view key="contentView" id="nI6-d7-JdZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </view>
-            <point key="canvasLocation" x="78" y="-282"/>
-        </window>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="9oY-h6-gX7" customClass="NSPanel">
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="9oY-h6-gX7" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="139" y="81" width="250" height="160"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <view key="contentView" id="Bew-4v-QvC">
+            <view key="contentView" identifier="preferencesView" id="Bew-4v-QvC">
                 <rect key="frame" x="0.0" y="0.0" width="250" height="160"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -122,7 +111,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="save:" target="-1" id="2vL-xu-mH0"/>
+                            <action selector="saveClicked:" target="-1" id="y7V-vz-j42"/>
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CjV-WO-g27">
@@ -165,20 +154,12 @@ Gw
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="cancel:" target="-1" id="WxX-ug-1e1"/>
+                            <action selector="cancelClicked:" target="-1" id="6sq-tD-bi8"/>
                         </connections>
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="140" y="-406"/>
+            <point key="canvasLocation" x="-199" y="-481"/>
         </window>
-        <button verticalHuggingPriority="750" id="Pp8-Xt-ef6">
-            <rect key="frame" x="0.0" y="0.0" width="82" height="19"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <buttonCell key="cell" type="roundRect" title="Round Rect" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GKR-TG-GIO">
-                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                <font key="font" metaFont="cellTitle"/>
-            </buttonCell>
-        </button>
     </objects>
 </document>
